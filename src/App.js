@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <React.Fragment>
+      <div class="container" id="contenedor">
+        <div class="row">
+          <div class="col">
+            First in DOM, no order applied
+          </div>
+          <div class="col order-12">
+            Second in DOM, with a larger order
+          </div>
+          <div class="col order-1">
+            Third in DOM, with an order of 1
+          </div>
+        </div>
+      </div>
+    </React.Fragment>
   );
 }
 
