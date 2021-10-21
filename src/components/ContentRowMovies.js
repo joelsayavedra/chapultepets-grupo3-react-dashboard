@@ -17,60 +17,53 @@ function ContentRowMovies(){
     //     console.log(categorias);
     // });
 
-    const [productos, setProductos]=useState([]);
+    const [totales, setTotales]=useState([]);
 
     useEffect(() =>{
-        fetch("https://chapultepets.herokuapp.com/api/products",{mode: "no-cors"})
-        .then(response=>response.json())
-        .then(data=>{
-            setProductos(data);
-            console.log(data);
-            console.log(productos);
+
+        let promesaProductos = fetch("https://chapultepets.herokuapp.com/api/products");
+        let promesaUsuarios = fetch("https://chapultepets.herokuapp.com/api/users");
+        let promesaCategorias = fetch("https://chapultepets.herokuapp.com/api/products/categories");
+
+        Promise.all([promesaProductos, promesaUsuarios, promesaCategorias])
+        .then(async([aa, bb,cc]) => {
+            const a = await aa.json();
+            const b = await bb.json();
+            const c = await cc.json();
+            return [a, b, c]
         })
-        .catch(error=>console.log(error));
-    },[])
-
-
-
-    // const consigueDatos=async()=>{
-        
-    // }
-
-    // let promesaProductos = await fetch("https://chapultepets.herokuapp.com/api/products");
-
-    let moviesInDB = {
-        title: 'Total de productos',
-        color: 'primary', 
-        cuantity: 21,
-        icon: 'fa-clipboard-list'
-    }
-    
-    /* <!-- Total awards --> */
-    
-    let totalAwards = {
-        title:' Total de usuarios', 
-        color:'success', 
-        cuantity: '79',
-        icon:'fa-award'
-    }
-    
-    /* <!-- Actors quantity --> */
-    
-    let actorsQuantity = {
-        title:'Total de categorías' ,
-        color:'warning',
-        cuantity:'49',
-        icon:'fa-user-check'
-    }
-    
-    let cartProps = [moviesInDB, totalAwards, actorsQuantity];
-
+        .then(([dataProductos, dataUsuarios, dataCategorias])=>{
+            setTotales([{
+                title: 'Total de productos',
+                color: 'primary', 
+                cuantity: dataProductos.count,
+                icon: 'fa-clipboard-list'
+            },
+            {
+                title:'Total de categorías' ,
+                color:'warning',
+                cuantity:dataCategorias.meta.total,
+                icon:'fa-user-check'
+            },
+            {
+                title:' Total de usuarios', 
+                color:'success', 
+                cuantity: dataUsuarios.meta.Count,
+                icon:'fa-award'
+            }]);
+        })
+        .catch(error=>console.log("Errooooooor!"+error));
+        // eslint-disable-next-line
+    },[]);
 
     return (
         <div className="row">
-            {cartProps.map( (movie, i) => {
-                return <SmallCard {...movie} key={i}/>
-            })}
+            {totales.length===0 && <p>Cargando</p>}
+            {
+                totales.map( (datos, i) => {
+                    return <SmallCard {...datos} key={i}/>
+                })
+            }
         </div>
     )
 }
