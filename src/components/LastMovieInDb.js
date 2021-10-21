@@ -1,6 +1,5 @@
 import {useState,useEffect} from "react";
 import React from 'react';
-// import imagenFondo from 'https://chapultepets.herokuapp.com/img/products/rueda_hamster.jpg';
 
 function LastMovieInDb(){
 
@@ -28,9 +27,14 @@ function LastMovieInDb(){
                 <div className="card-body">
                     {producto===0 && <p>Cargando</p>}
                     {
-                        <><div className="text-center">
-                            <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: 40 + 'rem' }} src={`https://chapultepets.herokuapp.com/img/products/${producto.image}`} alt=" Star Wars - Mandalorian " />
-                        </div><p>{producto.description}</p><a className="btn btn-danger" target="_blank" rel="nofollow" href={`https://chapultepets.herokuapp.com/products/${producto.id}`}>ir a página del producto</a></>
+                        <>
+                        <div className="text-center">
+                            <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: 40 + 'rem' }} src={`https://chapultepets.herokuapp.com/img/products/${producto.image}`} alt="Imagen de producto" />
+                        </div><p>{producto.description}</p>
+                        <a className="btn btn-danger" target="_blank" rel="noopener noreferrer" href={`https://chapultepets.herokuapp.com/products/${producto.id}`}>
+                            ir a página del producto
+                            </a>
+                        </>
                     }
                 </div>
             </div>
