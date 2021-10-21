@@ -35,31 +35,31 @@ function SideBar(){
 
                  {/*<!-- Nav Item - Pages -->*/}
                  <li className="nav-item">
-                    <Link className="nav-link collapsed" to="/genresindb">
+                    <Link className="nav-link collapsed" to="/categories">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>Totales</span>
+                        <span>Categorías</span>
                     </Link>
                 </li>
 
                 {/*<!-- Nav Item - Charts -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link" to="/lastmovieindb">
+                    <Link className="nav-link" to="/lastProduct">
                         <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Categorías</span>
-                    </Link>
-                </li>
-
-                {/*<!-- Nav Item - Tables -->*/}
-                <li className="nav-item">
-                    <Link className="nav-link" to="/contentRowMovies">
-                        <i className="fas fa-fw fa-table"></i>
                         <span>Último agregado</span>
                     </Link>
                 </li>
 
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link" to="/contentRowMovies">
+                    <Link className="nav-link" to="/totales">
+                        <i className="fas fa-fw fa-table"></i>
+                        <span>Totales</span>
+                    </Link>
+                </li>
+
+                {/*<!-- Nav Item - Tables -->*/}
+                <li className="nav-item">
+                    <Link className="nav-link" to="/products">
                         <i className="fas fa-fw fa-table"></i>
                         <span>Listado de productos</span>
                     </Link>

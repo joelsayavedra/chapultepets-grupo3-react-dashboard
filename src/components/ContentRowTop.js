@@ -20,14 +20,17 @@ function ContentRowTop(){
 					{/*<!-- Content Row Movies-->*/}
 
 					<Switch>
-						<Route exact={true} path="/genresindb">
+						<Route exact={true} path="/categories">
 							<GenresInDb />
 						</Route>
-						<Route exact={true} path="/lastmovieindb">
+						<Route exact={true} path="/lastproduct">
 							<LastMovieInDb />
 						</Route>
-						<Route exact={true} path="/contentRowMovies">
+						<Route exact={true} path="/totales">
 							<ContentRowMovies />
+						</Route>
+						<Route exact={true} path="/products">
+							<Chart />
 						</Route>
 						<Route exact={true} path="/">
 							<ContentRowMovies />
